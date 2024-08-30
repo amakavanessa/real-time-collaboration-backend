@@ -1,22 +1,22 @@
-if (
-  process.env.NODE_ENV === undefined ||
-  process.env.HOST === undefined ||
-  process.env.PORT === undefined ||
-  process.env.DATABASE_URL === undefined ||
-  process.env.USER === undefined ||
-  process.env.PASSWORD === undefined ||
-  process.env.DB_HOST === undefined ||
-  process.env.DB_PORT === undefined ||
-  process.env.DATABASE === undefined ||
-  process.env.DB_DIALECT === undefined ||
-  process.env.DB_PROTOCOL === undefined ||
-  process.env.SMTP_HOST === undefined ||
-  process.env.SMTP_PORT === undefined ||
-  process.env.SMTP_USER === undefined ||
-  process.env.SMTP_PASSWORD === undefined
-) {
-  throw new Error("Environment variables missing.");
-}
+// if (
+//   process.env.NODE_ENV === undefined ||
+//   process.env.HOST === undefined ||
+//   process.env.PORT === undefined ||
+//   process.env.DATABASE_URL === undefined ||
+//   process.env.USER === undefined ||
+//   process.env.PASSWORD === undefined ||
+//   process.env.DB_HOST === undefined ||
+//   process.env.DB_PORT === undefined ||
+//   process.env.DATABASE === undefined ||
+//   process.env.DB_DIALECT === undefined ||
+//   process.env.DB_PROTOCOL === undefined ||
+//   process.env.SMTP_HOST === undefined ||
+//   process.env.SMTP_PORT === undefined ||
+//   process.env.SMTP_USER === undefined ||
+//   process.env.SMTP_PASSWORD === undefined
+// ) {
+//   throw new Error("Environment variables missing.");
+// }
 
 const env = {
   NODE_ENV: process.env.NODE_ENV,
