@@ -51,7 +51,7 @@ class UserService {
                 from: "precious.c.nnam@gmail.com",
                 to: user.email,
                 subject: "Reset your password",
-                text: `https://${env_config_1.default.HOST}/user/reset-email/${user.passwordResetToken}`,
+                text: `You can reset your password through this link: https://${env_config_1.default.HOST}/user/reset-password/${user.passwordResetToken}`,
             };
             yield mail_service_1.mailService.sendMail(mail);
         });

@@ -42,7 +42,7 @@ class UserService {
       from: "precious.c.nnam@gmail.com",
       to: user.email,
       subject: "Reset your password",
-      text: `https://${env.HOST}/user/reset-email/${user.passwordResetToken}`,
+      text: `You can reset your password through this link: https://${env.HOST}/user/reset-password/${user.passwordResetToken}`,
     };
 
     await mailService.sendMail(mail);

@@ -2,7 +2,11 @@ import { validationResult } from "express-validator";
 import catchAsync from "../../middlewares/catch-async";
 import { Request, Response } from "express";
 import { userService } from "../../services/user.service";
-import { emailNotVerified, userNotFound } from "../../responses";
+import {
+  emailNotVerified,
+  invalidCredential,
+  userNotFound,
+} from "../../responses";
 import jwt, { VerifyErrors } from "jsonwebtoken";
 
 class AuthController {
@@ -22,7 +26,8 @@ class AuthController {
 
     const validPassword = await userService.checkPassword(user, password);
 
-    if (!validPassword) return res.status(401).json({ errors: userNotFound });
+    if (!validPassword)
+      return res.status(401).json({ errors: invalidCredential });
 
     if (!user.isVerified) {
       res.status(403).json({

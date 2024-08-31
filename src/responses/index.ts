@@ -1,4 +1,4 @@
-const userNotFound: Array<ResponseMessage> = [
+const invalidCredential: Array<ResponseMessage> = [
   {
     msg: "Your email or password is incorrect",
   },
@@ -16,4 +16,10 @@ const resetPassword: Array<ResponseMessage> = [
   },
 ];
 
-export { userNotFound, emailNotVerified, resetPassword };
+const userNotFound: Array<ResponseMessage> = [
+  {
+    msg: "User not found",
+  },
+];
+
+export { userNotFound, emailNotVerified, resetPassword, invalidCredential };

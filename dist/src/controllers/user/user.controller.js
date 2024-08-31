@@ -44,7 +44,7 @@ class UserController {
             const { email } = req.body;
             const user = yield user_service_1.userService.findUserByEmail(email);
             if (!user)
-                return res.status(200).json(responses_1.resetPassword);
+                return res.status(401).json(responses_1.userNotFound);
             yield user_service_1.userService.resetPassword(user);
             return res.status(200).json(responses_1.resetPassword);
         }));

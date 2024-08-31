@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import catchAsync from "../../middlewares/catch-async";
 import { validationResult } from "express-validator";
 import { userService } from "../../services/user.service";
-import { resetPassword } from "../../responses";
+import { resetPassword, userNotFound } from "../../responses";
 import jwt, { VerifyErrors } from "jsonwebtoken";
 class UserController {
   public register = catchAsync(async (req: Request, res: Response) => {
@@ -14,8 +14,6 @@ class UserController {
     const { email, password1 } = req.body;
 
     await userService.createUser(email, password1);
-
-    
 
     return res.sendStatus(200);
   });
@@ -40,7 +38,7 @@ class UserController {
     const { email } = req.body;
 
     const user = await userService.findUserByEmail(email);
-    if (!user) return res.status(200).json(resetPassword);
+    if (!user) return res.status(401).json(userNotFound);
 
     await userService.resetPassword(user);
 
