@@ -3,6 +3,7 @@ import { User } from "../db/models/user.model";
 import jwt from "jsonwebtoken";
 import { RefreshToken } from "../db/models/refresh-token.model";
 import { mailService } from "./mail.service";
+import env from "../config/env.config";
 
 class UserService {
   public findUserByEmail = async (email: string): Promise<User | null> => {
@@ -29,8 +30,8 @@ class UserService {
     const mail = {
       from: "precious.c.nnam@gmail.com",
       to: user.email,
-      subject: "Welcome to Collab App",
-      text: `Click the following link to verify your email: http://localhost:3000/user/verify-email/${user.verificationToken}`,
+      subject: "Welcome to Livedraft",
+      text: `Click the following link to verify your email: https://${env.HOST}/${user.verificationToken}`,
     };
 
     await mailService.sendMail(mail);
@@ -41,7 +42,7 @@ class UserService {
       from: "precious.c.nnam@gmail.com",
       to: user.email,
       subject: "Reset your password",
-      text: `http://localhost:3000/user/reset-email/${user.passwordResetToken}`,
+      text: `https://${env.HOST}/user/reset-email/${user.passwordResetToken}`,
     };
 
     await mailService.sendMail(mail);

@@ -18,6 +18,7 @@ const user_model_1 = require("../db/models/user.model");
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const refresh_token_model_1 = require("../db/models/refresh-token.model");
 const mail_service_1 = require("./mail.service");
+const env_config_1 = __importDefault(require("../config/env.config"));
 class UserService {
     constructor() {
         this.findUserByEmail = (email) => __awaiter(this, void 0, void 0, function* () {
@@ -40,8 +41,8 @@ class UserService {
             const mail = {
                 from: "precious.c.nnam@gmail.com",
                 to: user.email,
-                subject: "Welcome to Collab App",
-                text: `Click the following link to verify your email: http://localhost:3000/user/verify-email/${user.verificationToken}`,
+                subject: "Welcome to Livedraft",
+                text: `Click the following link to verify your email: https://${env_config_1.default.HOST}/${user.verificationToken}`,
             };
             yield mail_service_1.mailService.sendMail(mail);
         });
@@ -50,7 +51,7 @@ class UserService {
                 from: "precious.c.nnam@gmail.com",
                 to: user.email,
                 subject: "Reset your password",
-                text: `http://localhost:3000/user/reset-email/${user.passwordResetToken}`,
+                text: `https://${env_config_1.default.HOST}/user/reset-email/${user.passwordResetToken}`,
             };
             yield mail_service_1.mailService.sendMail(mail);
         });
