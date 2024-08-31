@@ -31,7 +31,7 @@ class UserService {
       from: "precious.c.nnam@gmail.com",
       to: user.email,
       subject: "Welcome to Livedraft",
-      text: `Click the following link to verify your email: https://${env.HOST}/${user.verificationToken}`,
+      text: `Click the following link to verify your email: https://${env.HOST}/user/verify-email/${user.verificationToken}`,
     };
 
     await mailService.sendMail(mail);

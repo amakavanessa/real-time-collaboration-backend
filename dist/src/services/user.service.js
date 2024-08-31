@@ -42,7 +42,7 @@ class UserService {
                 from: "precious.c.nnam@gmail.com",
                 to: user.email,
                 subject: "Welcome to Livedraft",
-                text: `Click the following link to verify your email: https://${env_config_1.default.HOST}/${user.verificationToken}`,
+                text: `Click the following link to verify your email: https://${env_config_1.default.HOST}/user/verify-email/${user.verificationToken}`,
             };
             yield mail_service_1.mailService.sendMail(mail);
         });
